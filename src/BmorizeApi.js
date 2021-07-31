@@ -41,23 +41,29 @@ class BmorizeApi {
   }
 
   static formatCardData(cards) {
-    let res = [];
+    let unformattedRes = [];
 
     for (const card of cards) {
       let firstCopy = {};
       firstCopy["value"] = card["code"];
       firstCopy["id"] = uuid();
       firstCopy["image"] = card["image"];
-      res.push(firstCopy);
+      unformattedRes.push(firstCopy);
 
       let secondCopy = { ...firstCopy };
       secondCopy["id"] = uuid();
-      res.push(secondCopy);
+      unformattedRes.push(secondCopy);
     }
 
-    let shuffledRes = this.shuffle(res);
+    let shuffledRes = this.shuffle(unformattedRes);
+    let formattedRes = [];
 
-    return shuffledRes;
+    // divide cards into rows of 6
+    for (let i = 0; i < unformattedRes.length; i += 6) {
+      formattedRes.push(shuffledRes.slice(i, i + 6));
+    }
+
+    return formattedRes;
   }
 
   static async getCards(level) {
