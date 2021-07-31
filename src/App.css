@@ -1,5 +1,6 @@
 .App {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: clip;
 }
 .container-fluid {
   padding: 0px;
@@ -16,4 +17,7 @@
 }
 .btn-main:focus {
   box-shadow: 0px 0px 1px 3px #63c6af;
+}
+.odd-row {
+  background-color: #f5f5f5;
 }
