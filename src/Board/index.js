@@ -15,8 +15,8 @@ function Board({ level, handleEndGame }) {
   useEffect(function fetchCardsWhenMounted() {
     async function fetchCards() {
       try {
-        const cardsResults = await BmorizeApi.getCards(level);
-        // const cardsResults = { 0: [{ value: "ok", image: "image.png", id: "ok" }, { value: "ok", image: "image.png", id: "ok2" }] };
+        // const cardsResults = await BmorizeApi.getCards(level);
+        const cardsResults = { 0: [{ value: "ok", image: "image.png", id: "ok" }, { value: "ok", image: "image.png", id: "ok2" }] };
         setCards(cardsResults);
       } catch (err) {
         setError(err);
@@ -49,18 +49,21 @@ function Board({ level, handleEndGame }) {
     }
   }, [flippedCards]);
 
-  // useEffect(function checkGameEnd() {
-  //   let rows = Object.keys(cards);
-  //   let cardsPerRow = cards['0'].length;
-  //   console.log('keys', Object.keys(cards).length);
-  //   let totalCards = rows.length * cardsPerRow;
-  //   console.log('huh', totalCards);
-  //   let totalUniqueCards = totalCards / 2;
-  //   let totalMatchedCards = matchedCards.size;
-
-  //   if (totalUniqueCards === totalMatchedCards) handleEndGame();
-
-  // }, [matchedCards, handleEndGame]);
+  useEffect(function checkGameEnd() {
+    console.log('run use effect');
+    if (matchedCards.size) {
+      console.log('inside if');
+      let rows = Object.keys(cards);
+      let cardsPerRow = cards['0'].length;
+      console.log('keys', Object.keys(cards).length);
+      let totalCards = rows.length * cardsPerRow;
+      console.log('huh', totalCards);
+      let totalUniqueCards = totalCards / 2;
+      let totalMatchedCards = matchedCards.size;
+  
+      if (totalUniqueCards === totalMatchedCards) handleEndGame();
+    }
+  });
 
   function checkCardMatch(firstCard, secondCard) {
     console.log('checking if cards match');
