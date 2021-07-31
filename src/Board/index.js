@@ -5,7 +5,7 @@ import Error from "../Error";
 import Loading from "../Loading";
 import "./Board.css";
 
-function Board() {
+function Board({ level }) {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +20,7 @@ function Board() {
   useEffect(function fetchCardsWhenMounted() {
     async function fetchCards() {
       try {
-        const cardsResults = await BmorizeApi.getCards();
+        const cardsResults = await BmorizeApi.getCards(level);
         setCards(cardsResults);
       } catch (err) {
         setError(err);
@@ -29,7 +29,7 @@ function Board() {
       }
     }
     fetchCards();
-  }, []);
+  }, [level]);
 
   function checkMatch(firstCard, secondCard) {
     if (firstCard[1] === secondCard[1]) {
@@ -71,18 +71,23 @@ function Board() {
 
   if (isLoading) return <Loading />;
   if (error) return <Error error={error} />;
+  let rowIdx = 0;
 
   return (
     <div className="col-8 my-auto Board-col">
-      <div className="row">
-        {cards.map((c) => {
-          let flipStatus = checkFlipStatus(c[0]);
-          let matchStatus = checkMatchStatus(c[1]);
+      {cards.map((r) => {
+        rowIdx++;
 
-          return <Card key={c[0]} card={c} flipStatus={flipStatus} matchStatus={matchStatus}
-            handleCardFlip={handleCardFlip} />;
-        })}
-      </div>
+        return <div className="row" key={rowIdx}>
+          {r.map(c => {
+            let flipStatus = checkFlipStatus(c[0]);
+            let matchStatus = checkMatchStatus(c[1]);
+
+            return <Card key={c.id} card={c} flipStatus={flipStatus} matchStatus={matchStatus}
+              handleCardFlip={handleCardFlip} />;
+          })}
+        </div>;
+      })}
     </div>
   );
 }
