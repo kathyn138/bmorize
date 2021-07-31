@@ -1,3 +1,6 @@
+.App {
+  overflow: auto;
+}
 .container-fluid {
   padding: 0px;
 }
