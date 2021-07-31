@@ -1,0 +1,19 @@
+.Landing-row {
+    text-align: center;
+    margin: 50px;
+}
+.Landing-mascot {
+    height: 300px;
+}
+.btn-play-now {
+    margin-left: 15px;
+}
+.Landing-engineer-icon {
+    border-radius: 50%;
+}
+.Landing-engineer-links a {
+    margin-right: 20px;
+}
+.Landing-social-icon {
+    height: 30px;
+}
