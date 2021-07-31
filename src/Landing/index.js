@@ -9,7 +9,7 @@ function Landing() {
     <React.Fragment>
       <div className="row Landing-row">
         <div className="col my-auto">
-          <h1>Level up your memory</h1>
+          <h1>Memorize with bmorize</h1>
           <p>something something
           other headers are: practice memorization, train your memory
           </p>
@@ -47,12 +47,6 @@ function Landing() {
         <div className="col">
           screenshot here
         </div>
-        <div className="col">
-          <h1>Beat records</h1>
-          <p>
-            idk what is a good header rn tbh
-          </p>
-        </div>
       </div>
       <div className="row Landing-row">
         <div className="col">
@@ -62,27 +56,14 @@ function Landing() {
       <div className="row Landing-row">
         <div className="col">
           <img className="Landing-engineer-icon" src="https://cdn.discordapp.com/attachments/729097963095457844/839648505005342730/813819507658719232.png" alt="engineer1"></img>
-          <h1>person1 name</h1>
+          <h1>Kathy Nguyen</h1>
           <p>person1 bio</p>
           <p className="Landing-engineer-links">
-            <a href="">
-              <img class="Landing-social-icon" src={githubIcon} alt=""></img>
+            <a href="https://github.com/kathyn138">
+              <img className="Landing-social-icon" src={githubIcon} alt=""></img>
             </a>
-            <a href="">
-              <img class="Landing-social-icon" src={linkedinIcon} alt=""></img>
-            </a>
-          </p>
-        </div>
-        <div className="col">
-          <img className="Landing-engineer-icon" src="https://cdn.discordapp.com/attachments/729097963095457844/839648505005342730/813819507658719232.png" alt="engineer2"></img>
-          <h1>person2 name</h1>
-          <p>person1 bio</p>
-          <p className="Landing-engineer-links">
-            <a href="">
-              <img class="Landing-social-icon" src={githubIcon} alt=""></img>
-            </a>
-            <a href="">
-              <img class="Landing-social-icon" src={linkedinIcon} alt=""></img>
+            <a href="https://www.linkedin.com/in/kathy-n-709a5">
+              <img className="Landing-social-icon" src={linkedinIcon} alt=""></img>
             </a>
           </p>
         </div>
