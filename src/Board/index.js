@@ -60,7 +60,7 @@ function Board({ level, handleEndGame }) {
       console.log('huh', totalCards);
       let totalUniqueCards = totalCards / 2;
       let totalMatchedCards = matchedCards.size;
-  
+
       if (totalUniqueCards === totalMatchedCards) handleEndGame();
     }
   });
@@ -69,15 +69,6 @@ function Board({ level, handleEndGame }) {
     console.log('checking if cards match');
     if (firstCard.value === secondCard.value) {
       return true;
-      // let rows = Object.keys(cards);
-      // let cardsPerRow = cards['0'].length;
-      // console.log('keys', Object.keys(cards).length);
-      // let totalCards = rows.length * cardsPerRow;
-      // console.log('huh', totalCards);
-      // let totalUniqueCards = totalCards / 2;
-      // let totalMatchedCards = matchedCards.size;
-
-      // if (totalUniqueCards === totalMatchedCards) handleEndGame();
     };
     return false;
   }
