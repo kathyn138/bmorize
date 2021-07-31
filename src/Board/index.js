@@ -10,6 +10,7 @@ function Board() {
   const [flippedCards, setFlippedCards] = useState([]);
 
   // matchedCards = [cardValue, ...]
+  // consider doing this as a set
   const [matchedCards, setMatchedCards] = useState([]);
 
   function checkMatch(firstCard, secondCard) {
@@ -52,9 +53,7 @@ function Board() {
 
   return (
     <div className="col-8 my-auto Board-col">
-      <h3>Playing as: guest</h3>
       <div className="row">
-
         {cards.map((c) => {
           let flipStatus = checkFlipStatus(c[0]);
           let matchStatus = checkMatchStatus(c[1]);
