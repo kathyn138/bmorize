@@ -1,0 +1,19 @@
+.Nav-row {
+    margin-right: 0;
+}
+.Nav-col {
+    padding-right: 0;
+}
+nav {
+    background-color: #5DA897;
+    filter: drop-shadow(-4px 0px 5px rgba(43, 43, 43, 0.6));
+}
+.navbar-brand, .nav-link {
+    color: white;
+}
+.nav-link {
+    margin-left: 10px;
+}
+.navbar-brand:hover, nav a:hover {
+    color: #475B5A;
+}
