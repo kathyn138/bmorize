@@ -56,11 +56,14 @@ class BmorizeApi {
     }
 
     let shuffledRes = this.shuffle(unformattedRes);
-    let formattedRes = [];
+    let formattedRes = {};
 
     // divide cards into rows of 6
+    let rowIdx = 0;
+
     for (let i = 0; i < unformattedRes.length; i += 6) {
-      formattedRes.push(shuffledRes.slice(i, i + 6));
+      formattedRes[rowIdx] = shuffledRes.slice(i, i + 6);
+      rowIdx++;
     }
 
     return formattedRes;

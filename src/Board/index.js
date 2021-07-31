@@ -82,15 +82,13 @@ function Board({ level }) {
   if (isLoading) return <Loading />;
   if (error) return <Error error={error} />;
 
-  let rowIdx = 0;
+  let rows = Object.keys(cards);
 
   return (
     <div className="col-8 my-auto Board-col">
-      {cards.map((r) => {
-        rowIdx++;
-
-        return <div className="row" key={rowIdx}>
-          {r.map(c => {
+      {rows.map((r) => {
+        return <div className="row" key={r}>
+          {cards[r].map(c => {
             let flipStatus = checkFlipStatus(c.id);
             let matchStatus = checkMatchStatus(c.value);
 
