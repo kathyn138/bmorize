@@ -5,8 +5,8 @@ import Error from "../Error";
 import Loading from "../Loading";
 import "./Board.css";
 
-function Board({ level }) {
-  const [cards, setCards] = useState([]);
+function Board({ level, handleEndGame }) {
+  const [cards, setCards] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [flippedCards, setFlippedCards] = useState([]);
@@ -16,6 +16,7 @@ function Board({ level }) {
     async function fetchCards() {
       try {
         const cardsResults = await BmorizeApi.getCards(level);
+        // const cardsResults = { 0: [{ value: "ok", image: "image.png", id: "ok" }, { value: "ok", image: "image.png", id: "ok2" }] };
         setCards(cardsResults);
       } catch (err) {
         setError(err);
@@ -30,31 +31,64 @@ function Board({ level }) {
 
   useEffect(function autoFlipCards() {
     if (flippedCards.length === 2) {
+      let match = checkCardMatch(...flippedCards);
+      if (match) {
+        setMatchedCards((matchedCards) => new Set([...matchedCards, flippedCards[0].value]));
+        return setFlippedCards([]);
+      }
+      console.log('set timer');
       timerId.current = setInterval(
         () => setFlippedCards([]),
         1000
       );
 
       return function cleanUpTimer() {
+        console.log('cleaning up');
         clearInterval(timerId.current);
       };
     }
   }, [flippedCards]);
 
+  // useEffect(function checkGameEnd() {
+  //   let rows = Object.keys(cards);
+  //   let cardsPerRow = cards['0'].length;
+  //   console.log('keys', Object.keys(cards).length);
+  //   let totalCards = rows.length * cardsPerRow;
+  //   console.log('huh', totalCards);
+  //   let totalUniqueCards = totalCards / 2;
+  //   let totalMatchedCards = matchedCards.size;
+
+  //   if (totalUniqueCards === totalMatchedCards) handleEndGame();
+
+  // }, [matchedCards, handleEndGame]);
+
   function checkCardMatch(firstCard, secondCard) {
+    console.log('checking if cards match');
     if (firstCard.value === secondCard.value) {
-      setMatchedCards(new Set([...matchedCards, firstCard.value]));
+      return true;
+      // let rows = Object.keys(cards);
+      // let cardsPerRow = cards['0'].length;
+      // console.log('keys', Object.keys(cards).length);
+      // let totalCards = rows.length * cardsPerRow;
+      // console.log('huh', totalCards);
+      // let totalUniqueCards = totalCards / 2;
+      // let totalMatchedCards = matchedCards.size;
+
+      // if (totalUniqueCards === totalMatchedCards) handleEndGame();
     };
+    return false;
   }
 
   function handleCardFlip(direction, card) {
     const flippedCount = flippedCards.length;
-
+    console.log('fp', flippedCount);
     if (direction === 'flip') {
       if (flippedCount < 2) {
         setFlippedCards([...flippedCards, card]);
-      } else  {
-        checkCardMatch(...flippedCards);
+      } else {
+        console.log('in else user flip');
+        let match = checkCardMatch(...flippedCards);
+        if (match) setMatchedCards(new Set([...matchedCards, flippedCards[0].value]));
         setFlippedCards([card]);
       }
     } else {
