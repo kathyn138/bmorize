@@ -1,4 +1,13 @@
 .Tutorial-row {
-    text-align: center;
-    margin: 50px;
+  text-align: center;
+  margin: 50px;
+}
+.Tutorial-mascot {
+  height: 300px;
+}
+.Tutorial-header {
+  margin-bottom: 20px;
+}
+.Tutorial-body-text {
+  margin-bottom: 20px;
 }
