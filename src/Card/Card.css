@@ -1,14 +1,21 @@
+.Card-col {
+  height: 100px;
+  padding: 0px;
+  margin: 20px;
+}
 .Card-scene {
-    background-color: transparent;
-    width: 100%;
-    height: auto;
-    perspective: 1000px; 
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px; 
 }
 /* container to position front and back side */
 .Card-flip-card {
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -17,12 +24,22 @@
 .Card-flip-card.is-flipped, .is-match {
   transform: rotateY(180deg);
 }
+.Card-front {
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 5px;
+}
 .Card-front, .Card-back {
   position: absolute;
-  width: 100%;
+  width: 71.97px;
+  margin: 0 auto;
   height: 100%;
   backface-visibility: hidden;
+  filter: drop-shadow(-4px 2px 2px rgba(43, 43, 43, 0.3));
 }
 .Card-back {
     transform: rotateY(180deg);
-  }
+}
+.Card-img {
+  height: 100px;
+}
