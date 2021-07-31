@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import { v4 as uuid } from 'uuid';
+import React, { useState, useEffect } from "react";
+import BmorizeApi from "../BmorizeApi";
 import Card from "../Card";
+import Error from "../Error";
+import Loading from "../Loading";
 import "./Board.css";
 
 function Board() {
-  const [cards, setCards] = useState([[uuid(), 1], [uuid(), 2], [uuid(), 3], [uuid(), 4], [uuid(), 5], [uuid(), 1], [uuid(), 2], [uuid(), 3], [uuid(), 4], [uuid(), 5]]);
+  const [cards, setCards] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // flippedCards = [[cardId, cardValue], ...]
   const [flippedCards, setFlippedCards] = useState([]);
@@ -12,6 +16,20 @@ function Board() {
   // matchedCards = [cardValue, ...]
   // consider doing this as a set
   const [matchedCards, setMatchedCards] = useState([]);
+
+  useEffect(function fetchCardsWhenMounted() {
+    async function fetchCards() {
+      try {
+        const cardsResults = await BmorizeApi.getCards();
+        setCards(cardsResults);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchCards();
+  }, []);
 
   function checkMatch(firstCard, secondCard) {
     if (firstCard[1] === secondCard[1]) {
@@ -50,6 +68,9 @@ function Board() {
     }
     return false;
   }
+
+  if (isLoading) return <Loading />;
+  if (error) return <Error error={error} />;
 
   return (
     <div className="col-8 my-auto Board-col">

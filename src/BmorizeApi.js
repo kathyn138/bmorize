@@ -19,8 +19,8 @@ class BmorizeApi {
 
     catch (err) {
       console.error("API Error:", err.response);
-      let message = err.response.data.message;
-      return Array.isArray(message) ? message : [message];
+      const message = err.response.status;
+      throw message;
     }
   }
 
