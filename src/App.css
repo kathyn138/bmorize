@@ -1,0 +1,16 @@
+.container-fluid {
+  padding: 0px;
+}
+.btn-main {
+  color: #ffffff;
+  background-color: #5DA897;
+  border: #5DA897;
+}
+.btn-main:hover {
+  color: #ffffff;
+  background-color: #558f82;
+  border: #558f82;
+}
+.btn-main:focus {
+  box-shadow: 0px 0px 1px 3px #63c6af;
+}
