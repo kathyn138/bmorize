@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Board from "../Board";
+import GameEndModal from "../GameEndModal";
 import LevelSelect from "../LevelSelect";
 import "./Game.css";
 
@@ -17,9 +18,14 @@ function Game() {
     setLevel(level);
   }
 
+  function handleEndGame() {
+    setGameEnd(true);
+  }
+
   return (
     <div className="row justify-content-center flex-grow-1 Game-row">
-      {gameStart ? <Board level={level} /> : <LevelSelect handleStart={handleStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />}
+      {gameEnd && <GameEndModal />}
+      {gameStart ? <Board level={level} handleEndGame={handleEndGame} /> : <LevelSelect handleStart={handleStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />}
     </div>
   );
 }
