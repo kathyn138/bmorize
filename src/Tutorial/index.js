@@ -1,27 +1,23 @@
 import React from "react";
+import "./Tutorial.css";
 
 function Tutorial() {
   return (
     <React.Fragment>
-      <div className="row">
-        <div className="col">
-          <h1>Tutorial</h1>
-        </div>
-      </div>
-      <div className="row">
+      <div className="row Tutorial-row">
         <div className="col my-auto">
-          <h1>Level up your memory</h1>
+          <h1>tutorial</h1>
           <p>something something
           other headers are: practice memorization, train your memory
           </p>
-          <button type="button" className="btn btn-main">Tutorial</button>
-          <button type="button" className="btn btn-main btn-play-now">Play Now</button>
+          <a className="btn btn-main" href="/tutorial" role="button">Tutorial</a>
+          <a className="btn btn-main btn-play-now" href="/game" role="button">Play Now</a>
         </div>
         <div className="col">
-          some
+          image here
         </div>
       </div>
-      <div className="row">
+      <div className="row Tutorial-row">
         <div className="col">
           screenshot here
         </div>
@@ -33,7 +29,7 @@ function Tutorial() {
           </p>
         </div>
       </div>
-      <div className="row">
+      <div className="row Tutorial-row">
         <div className="col">
           <h1>Win by matching all cards</h1>
           <p>
@@ -44,15 +40,9 @@ function Tutorial() {
           screenshot here
         </div>
       </div>
-      <div className="row">
+      <div className="row Tutorial-row">
         <div className="col">
           screenshot here
-        </div>
-        <div className="col">
-          <h1>Beat records</h1>
-          <p>
-            idk what is a good header rn tbh
-          </p>
         </div>
       </div>
     </React.Fragment>
