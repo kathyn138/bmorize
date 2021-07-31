@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BmorizeApi from "../BmorizeApi";
 import Card from "../Card";
 import Error from "../Error";
@@ -26,6 +26,21 @@ function Board({ level }) {
     fetchCards();
   }, [level]);
 
+  const timerId = useRef();
+
+  useEffect(function autoFlipCards() {
+    if (flippedCards.length === 2) {
+      timerId.current = setInterval(
+        () => setFlippedCards([]),
+        1000
+      );
+
+      return function cleanUpTimer() {
+        clearInterval(timerId.current);
+      };
+    }
+  }, [flippedCards]);
+
   function checkCardMatch(firstCard, secondCard) {
     if (firstCard.value === secondCard.value) {
       setMatchedCards(new Set([...matchedCards, firstCard.value]));
@@ -38,7 +53,7 @@ function Board({ level }) {
     if (direction === 'flip') {
       if (flippedCount < 2) {
         setFlippedCards([...flippedCards, card]);
-      } else {
+      } else  {
         checkCardMatch(...flippedCards);
         setFlippedCards([card]);
       }
