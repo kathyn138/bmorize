@@ -9,13 +9,8 @@ function Board({ level }) {
   const [cards, setCards] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  // flippedCards = [[cardId, cardValue], ...]
   const [flippedCards, setFlippedCards] = useState([]);
-
-  // matchedCards = [cardValue, ...]
-  // consider doing this as a set
-  const [matchedCards, setMatchedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState(new Set([]));
 
   useEffect(function fetchCardsWhenMounted() {
     async function fetchCards() {
@@ -31,9 +26,9 @@ function Board({ level }) {
     fetchCards();
   }, [level]);
 
-  function checkMatch(firstCard, secondCard) {
-    if (firstCard[1] === secondCard[1]) {
-      setMatchedCards([...matchedCards, firstCard[1]]);
+  function checkCardMatch(firstCard, secondCard) {
+    if (firstCard.value === secondCard.value) {
+      setMatchedCards(new Set([...matchedCards, firstCard.value]));
     };
   }
 
@@ -44,17 +39,17 @@ function Board({ level }) {
       if (flippedCount < 2) {
         setFlippedCards([...flippedCards, card]);
       } else {
-        checkMatch(...flippedCards);
+        checkCardMatch(...flippedCards);
         setFlippedCards([card]);
       }
     } else {
-      let filteredCards = flippedCards.filter(c => c[0] !== card[0]);
+      let filteredCards = flippedCards.filter(c => c.id !== card.id);
       setFlippedCards(filteredCards);
     }
   }
 
   function checkFlipStatus(cardId) {
-    let flippedCardIds = flippedCards.map(c => c[0]);
+    let flippedCardIds = flippedCards.map(c => c.id);
 
     if (flippedCardIds.includes(cardId)) {
       return true;
@@ -63,7 +58,7 @@ function Board({ level }) {
   }
 
   function checkMatchStatus(cardValue) {
-    if (matchedCards.includes(cardValue)) {
+    if (matchedCards.has(cardValue)) {
       return true;
     }
     return false;
@@ -71,6 +66,7 @@ function Board({ level }) {
 
   if (isLoading) return <Loading />;
   if (error) return <Error error={error} />;
+
   let rowIdx = 0;
 
   return (
@@ -80,8 +76,8 @@ function Board({ level }) {
 
         return <div className="row" key={rowIdx}>
           {r.map(c => {
-            let flipStatus = checkFlipStatus(c[0]);
-            let matchStatus = checkMatchStatus(c[1]);
+            let flipStatus = checkFlipStatus(c.id);
+            let matchStatus = checkMatchStatus(c.value);
 
             return <Card key={c.id} card={c} flipStatus={flipStatus} matchStatus={matchStatus}
               handleCardFlip={handleCardFlip} />;
