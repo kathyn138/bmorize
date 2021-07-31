@@ -17,8 +17,6 @@ function Navigation() {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/tutorial">Tutorial</NavLink></li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/game">Play Now</NavLink></li>
               </ul>
           </div>
         </nav>
