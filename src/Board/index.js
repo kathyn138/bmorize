@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import BmorizeApi from "../BmorizeApi";
 import Card from "../Card";
 import Error from "../Error";
@@ -11,6 +11,7 @@ function Board({ level, handleEndGame }) {
   const [isLoading, setIsLoading] = useState(true);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState(new Set([]));
+  const rows = Object.keys(cards);
 
   useEffect(
     function fetchCardsWhenMounted() {
@@ -59,16 +60,19 @@ function Board({ level, handleEndGame }) {
     [flippedCards]
   );
 
+  const totalUniqueCards = useMemo(() => {
+    if (rows.length > 0) {
+      let cardsPerRow = cards["0"].length;
+      let totalCards = rows.length * cardsPerRow;
+      return totalCards / 2;
+    }
+  }, [rows, cards]);
+
   useEffect(function checkGameEnd() {
     console.log("run use effect");
     if (matchedCards.size) {
       console.log("inside if");
-      let rows = Object.keys(cards);
-      let cardsPerRow = cards["0"].length;
       console.log("keys", Object.keys(cards).length);
-      let totalCards = rows.length * cardsPerRow;
-      console.log("huh", totalCards);
-      let totalUniqueCards = totalCards / 2;
       let totalMatchedCards = matchedCards.size;
 
       if (totalUniqueCards === totalMatchedCards) handleEndGame();
@@ -120,8 +124,6 @@ function Board({ level, handleEndGame }) {
 
   if (isLoading) return <Loading />;
   if (error) return <Error error={error} />;
-
-  let rows = Object.keys(cards);
 
   return (
     <div className="col-8 my-auto Board-col">
