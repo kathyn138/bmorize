@@ -1,0 +1,12 @@
+{
+  "extends": ["react-app", "prettier"],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "rules": {
+        "semi": [2, "always"]
+      }
+    }
+  ]
+}
