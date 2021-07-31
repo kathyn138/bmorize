@@ -29,6 +29,10 @@
   background-color: white;
   border-radius: 5px;
 }
+.Card-front-img {
+  margin-top: 8px;
+  height: 90px;
+}
 .Card-front, .Card-back {
   position: absolute;
   width: 71.97px;
@@ -40,6 +44,6 @@
 .Card-back {
     transform: rotateY(180deg);
 }
-.Card-img {
+.Card-back-img {
   height: 100px;
 }
