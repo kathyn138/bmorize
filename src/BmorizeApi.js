@@ -20,13 +20,12 @@ class BmorizeApi {
     catch (err) {
       console.error("API Error:", err.response);
       let message = err.response.data.message;
-      throw Array.isArray(message) ? message : [message];
+      return Array.isArray(message) ? message : [message];
     }
   }
 
   static async getNewShuffledDeck() {
     let res = await this.request("/new/shuffle");
-    console.log('here');
     return res.deck_id;
   }
 
