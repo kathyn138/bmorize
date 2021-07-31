@@ -17,7 +17,7 @@ function LevelSelect({ handleStart, handleLevelSelection, selectedLevel }) {
       <h2>Select a level</h2>
 
       <div className="LevelSelect-btns">
-        {levels.map(l => <LevelBtn level={l}
+        {levels.map(l => <LevelBtn key={l} level={l}
           handleLevelSelection={handleLevelSelection}
           selectedLevel={selectedLevel} />)}
       </div>
