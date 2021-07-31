@@ -12,52 +12,62 @@ function Board({ level, handleEndGame }) {
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState(new Set([]));
 
-  useEffect(function fetchCardsWhenMounted() {
-    async function fetchCards() {
-      try {
-        // const cardsResults = await BmorizeApi.getCards(level);
-        const cardsResults = { 0: [{ value: "ok", image: "image.png", id: "ok" }, { value: "ok", image: "image.png", id: "ok2" }] };
-        setCards(cardsResults);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
+  useEffect(
+    function fetchCardsWhenMounted() {
+      async function fetchCards() {
+        try {
+          // const cardsResults = await BmorizeApi.getCards(level);
+          const cardsResults = {
+            0: [
+              { value: "ok", image: "image.png", id: "ok" },
+              { value: "ok", image: "image.png", id: "ok2" },
+            ],
+          };
+          setCards(cardsResults);
+        } catch (err) {
+          setError(err);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-    fetchCards();
-  }, [level]);
+      fetchCards();
+    },
+    [level]
+  );
 
   const timerId = useRef();
 
-  useEffect(function autoFlipCards() {
-    if (flippedCards.length === 2) {
-      let match = checkCardMatch(...flippedCards);
-      if (match) {
-        setMatchedCards((matchedCards) => new Set([...matchedCards, flippedCards[0].value]));
-        return setFlippedCards([]);
-      }
-      console.log('set timer');
-      timerId.current = setInterval(
-        () => setFlippedCards([]),
-        1000
-      );
+  useEffect(
+    function autoFlipCards() {
+      if (flippedCards.length === 2) {
+        let match = checkCardMatch(...flippedCards);
+        if (match) {
+          setMatchedCards(
+            (matchedCards) => new Set([...matchedCards, flippedCards[0].value])
+          );
+          return setFlippedCards([]);
+        }
+        console.log("set timer");
+        timerId.current = setInterval(() => setFlippedCards([]), 1000);
 
-      return function cleanUpTimer() {
-        console.log('cleaning up');
-        clearInterval(timerId.current);
-      };
-    }
-  }, [flippedCards]);
+        return function cleanUpTimer() {
+          console.log("cleaning up");
+          clearInterval(timerId.current);
+        };
+      }
+    },
+    [flippedCards]
+  );
 
   useEffect(function checkGameEnd() {
-    console.log('run use effect');
+    console.log("run use effect");
     if (matchedCards.size) {
-      console.log('inside if');
+      console.log("inside if");
       let rows = Object.keys(cards);
-      let cardsPerRow = cards['0'].length;
-      console.log('keys', Object.keys(cards).length);
+      let cardsPerRow = cards["0"].length;
+      console.log("keys", Object.keys(cards).length);
       let totalCards = rows.length * cardsPerRow;
-      console.log('huh', totalCards);
+      console.log("huh", totalCards);
       let totalUniqueCards = totalCards / 2;
       let totalMatchedCards = matchedCards.size;
 
@@ -66,33 +76,34 @@ function Board({ level, handleEndGame }) {
   });
 
   function checkCardMatch(firstCard, secondCard) {
-    console.log('checking if cards match');
+    console.log("checking if cards match");
     if (firstCard.value === secondCard.value) {
       return true;
-    };
+    }
     return false;
   }
 
   function handleCardFlip(direction, card) {
     const flippedCount = flippedCards.length;
-    console.log('fp', flippedCount);
-    if (direction === 'flip') {
+    console.log("fp", flippedCount);
+    if (direction === "flip") {
       if (flippedCount < 2) {
         setFlippedCards([...flippedCards, card]);
       } else {
-        console.log('in else user flip');
+        console.log("in else user flip");
         let match = checkCardMatch(...flippedCards);
-        if (match) setMatchedCards(new Set([...matchedCards, flippedCards[0].value]));
+        if (match)
+          setMatchedCards(new Set([...matchedCards, flippedCards[0].value]));
         setFlippedCards([card]);
       }
     } else {
-      let filteredCards = flippedCards.filter(c => c.id !== card.id);
+      let filteredCards = flippedCards.filter((c) => c.id !== card.id);
       setFlippedCards(filteredCards);
     }
   }
 
   function checkFlipStatus(cardId) {
-    let flippedCardIds = flippedCards.map(c => c.id);
+    let flippedCardIds = flippedCards.map((c) => c.id);
 
     if (flippedCardIds.includes(cardId)) {
       return true;
@@ -115,15 +126,24 @@ function Board({ level, handleEndGame }) {
   return (
     <div className="col-8 my-auto Board-col">
       {rows.map((r) => {
-        return <div className="row" key={r}>
-          {cards[r].map(c => {
-            let flipStatus = checkFlipStatus(c.id);
-            let matchStatus = checkMatchStatus(c.value);
+        return (
+          <div className="row" key={r}>
+            {cards[r].map((c) => {
+              let flipStatus = checkFlipStatus(c.id);
+              let matchStatus = checkMatchStatus(c.value);
 
-            return <Card key={c.id} card={c} flipStatus={flipStatus} matchStatus={matchStatus}
-              handleCardFlip={handleCardFlip} />;
-          })}
-        </div>;
+              return (
+                <Card
+                  key={c.id}
+                  card={c}
+                  flipStatus={flipStatus}
+                  matchStatus={matchStatus}
+                  handleCardFlip={handleCardFlip}
+                />
+              );
+            })}
+          </div>
+        );
       })}
     </div>
   );

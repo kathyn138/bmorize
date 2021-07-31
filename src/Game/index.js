@@ -7,7 +7,7 @@ import "./Game.css";
 function Game() {
   const [gameStart, setGameStart] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
-  const [level, setLevel] = useState('');
+  const [level, setLevel] = useState("");
 
   function handleGameStart() {
     setGameStart(true);
@@ -26,7 +26,7 @@ function Game() {
   function handleResetGame() {
     setGameEnd(false);
     setGameStart(false);
-    setLevel('');
+    setLevel("");
   }
 
   let display;
@@ -36,7 +36,13 @@ function Game() {
   } else if (gameEnd) {
     display = <GameEnd handleResetGame={handleResetGame} />;
   } else {
-    display = <LevelSelect handleGameStart={handleGameStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />;
+    display = (
+      <LevelSelect
+        handleGameStart={handleGameStart}
+        handleLevelSelection={handleLevelSelection}
+        selectedLevel={level}
+      />
+    );
   }
 
   return (
