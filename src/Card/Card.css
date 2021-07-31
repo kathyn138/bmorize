@@ -1,0 +1,28 @@
+.Card-scene {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    perspective: 1000px; 
+}
+/* container to position front and back side */
+.Card-flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+/* horizontal flip */
+.Card-flip-card.is-flipped, .is-match {
+  transform: rotateY(180deg);
+}
+.Card-front, .Card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.Card-back {
+    transform: rotateY(180deg);
+  }
