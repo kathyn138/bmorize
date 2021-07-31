@@ -2,14 +2,11 @@ import React from "react";
 import LevelBtn from "../LevelBtn";
 import "./LevelSelect.css";
 
-function LevelSelect({ handleStart, handleLevelSelection, selectedLevel }) {
+function LevelSelect({ handleGameStart, handleLevelSelection, selectedLevel }) {
   const levels = ['easy', 'medium', 'hard'];
 
-  //TODO: logic to only select one level at a time
-  // add "active" class to the selected level btn
-
   function handleStartClick() {
-    handleStart();
+    handleGameStart();
   }
 
   return (
