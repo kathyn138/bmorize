@@ -5,43 +5,10 @@
     filter: drop-shadow(-4px 0px 3px rgba(43, 43, 43, 0.3));
 }
 .LevelSelect-btns { 
-    margin-top: 20px;;
+    margin-top: 20px;
 }
 .LevelSelect-btns button {
     margin-right: 30px;
-}
-.LevelSelect-btn-outline-easy {
-    color: #01ccdd;
-    border: 1px solid #01ccdd;
-}
-.LevelSelect-btn-outline-easy:hover, .LevelSelect-btn-outline-easy.active{
-    color: #ffffff;
-    background-color: #01ccdd;
-}
-.LevelSelect-btn-outline-easy:focus {
-    box-shadow: 0px 0px 1px 3px #93f0f9b1;
-}
-.LevelSelect-btn-outline-med {
-    color: #ebc929;
-    border: 1px solid #ebc929;
-}
-.LevelSelect-btn-outline-med:hover, .LevelSelect-btn-outline-med.active{
-    color: #ffffff;
-    background-color: #ebc929;
-}
-.LevelSelect-btn-outline-med:focus {
-    box-shadow: 0px 0px 1px 3px #eeda7dc4;
-}
-.LevelSelect-btn-outline-hard {
-    color: #ed005a;
-    border: 1px solid #ed005a;
-}
-.LevelSelect-btn-outline-hard:hover, .LevelSelect-btn-outline-hard.active{
-    color: #ffffff;
-    background-color: #ed005a;
-}
-.LevelSelect-btn-outline-hard:focus {
-    box-shadow: 0px 0px 1px 3px #f950919f;
 }
 .LevelSelect-btn-submit {
     margin-top: 20px;

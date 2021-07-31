@@ -1,0 +1,33 @@
+.LevelBtn-outline-easy {
+    color: #01ccdd;
+    border: 1px solid #01ccdd;
+}
+.LevelBtn-outline-easy:hover, .LevelBtn-outline-easy.active{
+    color: #ffffff;
+    background-color: #01ccdd;
+}
+.LevelBtn-outline-easy:focus {
+    box-shadow: 0px 0px 1px 3px #93f0f9b1;
+}
+.LevelBtn-outline-medium {
+    color: #ebc929;
+    border: 1px solid #ebc929;
+}
+.LevelBtn-outline-medium:hover, .LevelBtn-outline-medium.active{
+    color: #ffffff;
+    background-color: #ebc929;
+}
+.LevelBtn-outline-medium:focus {
+    box-shadow: 0px 0px 1px 3px #eeda7dc4;
+}
+.LevelBtn-outline-hard {
+    color: #ed005a;
+    border: 1px solid #ed005a;
+}
+.LevelBtn-outline-hard:hover, .LevelBtn-outline-hard.active{
+    color: #ffffff;
+    background-color: #ed005a;
+}
+.LevelBtn-outline-hard:focus {
+    box-shadow: 0px 0px 1px 3px #f950919f;
+}

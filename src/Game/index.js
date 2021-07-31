@@ -8,10 +8,17 @@ function Game() {
   const [gameEnd, setGameEnd] = useState(false);
   const [level, setLevel] = useState('');
 
+  function handleStart() {
+    setGameStart(true);
+  }
+
+  function handleLevelSelection(level) {
+    setLevel(level);
+  }
+
   return (
     <div className="row justify-content-center flex-grow-1 Game-row">
-      <Board />
-      {/* <LevelSelect /> */}
+      {gameStart ? <Board /> : <LevelSelect handleStart={handleStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />}
     </div>
   );
 }
