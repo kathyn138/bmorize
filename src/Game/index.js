@@ -10,6 +10,7 @@ function Game() {
 
   function handleStart() {
     setGameStart(true);
+    setLevel(level);
   }
 
   function handleLevelSelection(level) {
@@ -18,7 +19,7 @@ function Game() {
 
   return (
     <div className="row justify-content-center flex-grow-1 Game-row">
-      {gameStart ? <Board /> : <LevelSelect handleStart={handleStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />}
+      {gameStart ? <Board level={level} /> : <LevelSelect handleStart={handleStart} handleLevelSelection={handleLevelSelection} selectedLevel={level} />}
     </div>
   );
 }
