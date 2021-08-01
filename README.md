@@ -5,7 +5,7 @@ There are three levels (easy, difficult, and hard) for users to choose from.
 
 bmorize was created in x days as part of the Hiring Hackathon for Junior Web Developers hosted by [Mintbean](https://mintbean.io/). 
 
-bmorize is live on [Netlify](https://bmorize.netlify.app/).
+bmorize is [live on Netlify](https://bmorize.netlify.app/).
 
 ![Landing page screenshot](src/assets/landing-screenshot.png)
 ![Sample question screenshot](src/assets/question-screenshot.png)
