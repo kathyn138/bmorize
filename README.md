@@ -12,11 +12,11 @@ bmorize is live on [Netlify](link here).
 
 ## Table of Contents
 
-- [Installation](https://github.com/kathyn262/triviar#installation)
-- [Testing](https://github.com/kathyn262/triviar#testing)
-- [Technologies](https://github.com/kathyn262/triviar#technologies)
-- [Component Hierarchy](https://github.com/kathyn262/triviar#component-hierarchy)
-- [Engineer Info](https://github.com/kathyn262/triviar#future-implementations)
+- [Installation](https://github.com/kathyn138/bmorize#installation)
+- [Testing](https://github.com/kathyn138/bmorize#testing)
+- [Technologies](https://github.com/kathyn138/bmorize#technologies)
+- [Component Hierarchy](https://github.com/kathyn138/bmorize#component-hierarchy)
+- [Engineer Info](https://github.com/kathyn138/bmorize#engineer-info)
 
 ## Installation
 
