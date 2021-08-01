@@ -40,7 +40,7 @@ class BmorizeApi {
     return arr;
   }
 
-  static formatCardData(cards) {
+  static formatCardData(cards, cardsPerRow) {
     let unformattedRes = [];
 
     for (const card of cards) {
@@ -48,21 +48,21 @@ class BmorizeApi {
       firstCopy["value"] = card["code"];
       firstCopy["id"] = uuid();
       firstCopy["image"] = card["image"];
-      unformattedRes.push(firstCopy);
 
       let secondCopy = { ...firstCopy };
       secondCopy["id"] = uuid();
-      unformattedRes.push(secondCopy);
+
+      unformattedRes.push(firstCopy, secondCopy);
     }
 
     let shuffledRes = this.shuffle(unformattedRes);
     let formattedRes = {};
 
-    // divide cards into rows of 6
+    // divide cards into rows
     let rowIdx = 0;
 
-    for (let i = 0; i < unformattedRes.length; i += 6) {
-      formattedRes[rowIdx] = shuffledRes.slice(i, i + 6);
+    for (let i = 0; i < unformattedRes.length; i += cardsPerRow) {
+      formattedRes[rowIdx] = shuffledRes.slice(i, i + cardsPerRow);
       rowIdx++;
     }
 
@@ -70,6 +70,8 @@ class BmorizeApi {
   }
 
   static async getCards(level) {
+    // cardCount is count of unique cards
+    // based on multiples of 6 idk how to phrase
     let cardCount;
 
     if (level === 'easy') {
@@ -82,7 +84,7 @@ class BmorizeApi {
 
     let deckId = await this.getNewShuffledDeck();
     let res = await this.request(`/${deckId}/draw/?count=${cardCount}`);
-    let formattedRes = this.formatCardData(res.cards);
+    let formattedRes = this.formatCardData(res.cards, 6);
 
     return formattedRes;
   }
