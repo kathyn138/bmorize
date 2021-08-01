@@ -14,7 +14,7 @@ function Tutorial() {
           <p className="Tutorial-body-text">Learn how to play</p>
         </div>
       </div>
-      <div className="row Tutorial-row">
+      <div className="row odd-row Tutorial-row">
         <div className="col">
           <h1 className="Tutorial-header">Select a level</h1>
           <p className="Tutorial-body-text">Pick between three levels: easy, medium, hard.</p>
@@ -33,7 +33,7 @@ function Tutorial() {
           </p>
         </div>
       </div>
-      <div className="row Tutorial-row">
+      <div className="row odd-row Tutorial-row">
         <div className="col">
           <h1 className="Tutorial-header">Win</h1>
           <p className="Tutorial-body-text">Win the game by matching all cards.</p>

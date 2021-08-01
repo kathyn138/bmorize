@@ -9,7 +9,7 @@ nav {
     filter: drop-shadow(-4px 0px 5px rgba(43, 43, 43, 0.6));
 }
 .navbar-brand, .nav-link {
-    color: white;
+    color: #ffffff;
 }
 .nav-link {
     margin-left: 10px;

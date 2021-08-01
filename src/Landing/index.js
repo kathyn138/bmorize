@@ -22,7 +22,7 @@ function Landing() {
           <img className="Landing-mascot" src={mascot} alt="mascot"></img>
         </div>
       </div>
-      <div className="row Landing-row">
+      <div className="row odd-row Landing-row">
         <div className="col">screenshot here</div>
         <div className="col">
           <h1 className="Landing-header">Select a difficulty</h1>
@@ -43,7 +43,7 @@ function Landing() {
         </div>
         <div className="col">screenshot here</div>
       </div>
-      <div className="row Landing-row">
+      <div className="row odd-row Landing-row">
         <div className="col">
           <h1 className="Landing-header">Meet the Engineers</h1>
           <img
