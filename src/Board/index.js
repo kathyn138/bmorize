@@ -17,13 +17,13 @@ function Board({ level, handleEndGame }) {
     function fetchCardsWhenMounted() {
       async function fetchCards() {
         try {
-          // const cardsResults = await BmorizeApi.getCards(level);
-          const cardsResults = {
-            0: [
-              { value: "ok", image: "image.png", id: "ok" },
-              { value: "ok", image: "image.png", id: "ok2" },
-            ],
-          };
+          const cardsResults = await BmorizeApi.getCards(level);
+          // const cardsResults = {
+          //   0: [
+          //     { value: "ok", image: "image.png", id: "ok" },
+          //     { value: "ok", image: "image.png", id: "ok2" },
+          //   ],
+          // };
           setCards(cardsResults);
         } catch (err) {
           setError(err);
