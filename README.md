@@ -45,12 +45,18 @@ Front end unit tests are written with Enzyme. Run tests with the following comma
 
 ```
 App
-├─┬ StartScreen
-│ └─┬ Quiz
-│   └─┬ Question
-│     └── ResultModal
-│
-└── EndScreen
+├── Navigation
+└─┬ Routes
+  ├── Landing
+  ├── Tutorial
+  └─┬ Game
+    ├─┬ LevelSelect
+    │ └── LevelBtn
+    ├─┬ Board
+    │ ├── Loading
+    │ ├── Error
+    │ └── Card
+    └── GameEnd
 ```
 
 ## Engineer Info
