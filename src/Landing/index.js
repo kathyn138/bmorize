@@ -46,7 +46,7 @@ function Landing() {
       </div>
       <div className="row odd-row Landing-row">
         <div className="col">
-          <h1 className="Landing-header">Meet the Engineers</h1>
+          <h1 className="Landing-header">Meet the Engineer</h1>
           <img
             className="Landing-engineer-icon"
             src="https://kathyn138.github.io/assets/custom/about-pic.png"
