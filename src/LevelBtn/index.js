@@ -3,15 +3,19 @@ import "./LevelBtn.css";
 
 function LevelBtn({ level, handleLevelSelection, selectedLevel }) {
   const levelTitle = level[0].toUpperCase() + level.slice(1);
-  const activeStatus = level === selectedLevel ? 'active' : null;
+  const activeStatus = level === selectedLevel ? "active" : "";
 
   function handleClick() {
     handleLevelSelection(level);
   }
   return (
-    <button type="button"
+    <button
+      type="button"
       className={`btn LevelBtn-outline-${level} ${activeStatus}`}
-      onClick={handleClick}>{levelTitle}</button>
+      onClick={handleClick}
+    >
+      {levelTitle}
+    </button>
   );
 }
 
