@@ -14,7 +14,7 @@ function Tutorial() {
         </div>
         <div className="col my-auto">
           <h1 className="Tutorial-header">Tutorial</h1>
-          <p className="Tutorial-body-text">Learn how to play</p>
+          <p className="Tutorial-body-text">Learn how to play.</p>
         </div>
       </div>
       <div className="row odd-row Tutorial-row">
@@ -47,7 +47,7 @@ function Tutorial() {
             Click on a card to flip it over and reveal its identity.
           </p>
           <p className="Tutorial-body-text">
-            Pairs of non-matching flipped cards will automatically be reflipped
+            Pairs of non-matching flipped cards will automatically be unflipped
             after a second.
           </p>
         </div>

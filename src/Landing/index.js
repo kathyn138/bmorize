@@ -29,14 +29,14 @@ function Landing() {
       </div>
       <div className="row odd-row Landing-row">
         <div className="col">
-        <img
+          <img
             className="Landing-demo-gif"
             src={levelSelectDemo}
             alt="level select demo"
           ></img>
         </div>
         <div className="col my-auto">
-          <h1 className="Landing-header">Select a difficulty</h1>
+          <h1 className="Landing-header">Select a level</h1>
           <p className="Landing-body-text">
             Some days you might be up for a challenge, some days you might not
             be.
@@ -48,7 +48,7 @@ function Landing() {
       </div>
       <div className="row Landing-row">
         <div className="col my-auto">
-          <h1 className="Landing-header">Win by matching all cards</h1>
+          <h1 className="Landing-header">Match all cards</h1>
           <p className="Landing-body-text">No distractions.</p>
           <p className="Landing-body-text">One clear goal.</p>
         </div>
