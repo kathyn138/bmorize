@@ -11,7 +11,9 @@ function Landing() {
         <div className="col my-auto">
           <h1 className="Landing-header">Memorize with bmorize</h1>
           <p className="Landing-body-text">Level up your memory today.</p>
-          <p className="Landing-body-text">A matching card game with a minimalist design.</p>
+          <p className="Landing-body-text">
+            A matching card game with a minimalist design.
+          </p>
           <a className="btn btn-main" href="/tutorial" role="button">
             Tutorial
           </a>

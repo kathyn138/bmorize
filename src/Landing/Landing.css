@@ -1,27 +1,27 @@
 .Landing-row {
-    text-align: center;
-    padding: 50px;
+  text-align: center;
+  padding: 50px;
 }
 .Landing-header {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .Landing-body-text {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .Landing-mascot {
-    height: 300px;
+  height: 300px;
 }
 .btn-play-now {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 .Landing-engineer-icon {
-    border-radius: 50%;
-    height: 200px;
-    margin-bottom: 20px;
+  border-radius: 50%;
+  height: 200px;
+  margin-bottom: 20px;
 }
 .Landing-engineer-links a {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 .Landing-social-icon {
-    height: 30px;
+  height: 30px;
 }
