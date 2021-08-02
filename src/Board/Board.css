@@ -1,6 +1,6 @@
 .Board-col {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    filter: drop-shadow(-4px 0px 3px rgba(43, 43, 43, 0.3));
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  filter: drop-shadow(-4px 0px 3px rgba(43, 43, 43, 0.3));
 }
