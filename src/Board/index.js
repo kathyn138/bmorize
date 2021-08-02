@@ -80,10 +80,7 @@ function Board({ level, handleEndGame }) {
    * equal to total number of matched cards
    */
   useEffect(function checkGameEnd() {
-    console.log("run use effect");
     if (matchedCards.size) {
-      console.log("inside if");
-      console.log("keys", Object.keys(cards).length);
       let totalMatchedCards = matchedCards.size;
 
       if (totalUniqueCards === totalMatchedCards) handleEndGame();
@@ -91,7 +88,6 @@ function Board({ level, handleEndGame }) {
   });
 
   function checkCardMatch(firstCard, secondCard) {
-    console.log("checking if cards match");
     if (firstCard.value === secondCard.value) {
       return true;
     }
@@ -109,13 +105,13 @@ function Board({ level, handleEndGame }) {
    */
   function handleCardFlip(direction, card) {
     const flippedCount = flippedCards.length;
-    console.log("fp", flippedCount);
+
     if (direction === "flip") {
       if (flippedCount < 2) {
         setFlippedCards([...flippedCards, card]);
       } else {
-        console.log("in else user flip");
         let match = checkCardMatch(...flippedCards);
+        
         if (match) {
           setMatchedCards(new Set([...matchedCards, flippedCards[0].value]));
         } else {
