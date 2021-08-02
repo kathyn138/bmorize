@@ -3,12 +3,12 @@
 bmorize is a matching card game that users can use to practice their memorization skills.
 There are three levels (easy, difficult, and hard) for users to choose from.
 
-bmorize was created in x days as part of the Hiring Hackathon for Junior Web Developers hosted by [Mintbean](https://mintbean.io/). 
+bmorize was created in 3 days as part of the Hiring Hackathon for Junior Web Developers hosted by [Mintbean](https://mintbean.io/). 
 
 bmorize is [live on Netlify](https://bmorize.netlify.app/).
 
-![Landing page screenshot](src/assets/landing-screenshot.png)
-![Sample question screenshot](src/assets/question-screenshot.png)
+![level select demo gif](src/assets/level-select-demo.gif)
+![game play demo gif](src/assets/game-play-demo.gif)
 
 ## Table of Contents
 
