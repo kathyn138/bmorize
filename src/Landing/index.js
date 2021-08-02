@@ -1,6 +1,8 @@
 import React from "react";
 import "./Landing.css";
 import mascot from "../assets/bmo.png";
+import levelSelectDemo from "../assets/level-select-demo.gif";
+import gamePlayDemo from "../assets/game-play-demo.gif";
 import githubIcon from "../assets/github-icon.png";
 import linkedinIcon from "../assets/linkedin-icon.png";
 
@@ -26,8 +28,14 @@ function Landing() {
         </div>
       </div>
       <div className="row odd-row Landing-row">
-        <div className="col">screenshot here</div>
         <div className="col">
+        <img
+            className="Landing-demo-gif"
+            src={levelSelectDemo}
+            alt="level select demo"
+          ></img>
+        </div>
+        <div className="col my-auto">
           <h1 className="Landing-header">Select a difficulty</h1>
           <p className="Landing-body-text">
             Some days you might be up for a challenge, some days you might not
@@ -39,12 +47,18 @@ function Landing() {
         </div>
       </div>
       <div className="row Landing-row">
-        <div className="col">
+        <div className="col my-auto">
           <h1 className="Landing-header">Win by matching all cards</h1>
           <p className="Landing-body-text">No distractions.</p>
           <p className="Landing-body-text">One clear goal.</p>
         </div>
-        <div className="col">screenshot here</div>
+        <div className="col">
+          <img
+            className="Landing-demo-gif"
+            src={gamePlayDemo}
+            alt="game play demo"
+          ></img>
+        </div>
       </div>
       <div className="row odd-row Landing-row">
         <div className="col">
