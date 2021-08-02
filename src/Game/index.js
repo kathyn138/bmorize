@@ -4,6 +4,11 @@ import GameEnd from "../GameEnd";
 import LevelSelect from "../LevelSelect";
 import "./Game.css";
 
+/**
+ * keeps track of game level and
+ * renders different screen depending on status of game
+ * (level selection, in progress, complete)
+ */
 function Game() {
   const [gameScreen, setGameScreen] = useState("");
   const [level, setLevel] = useState("");

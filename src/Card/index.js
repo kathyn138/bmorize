@@ -2,6 +2,10 @@ import React from "react";
 import mascot from "../assets/bmo-card-front.png";
 import "./Card.css";
 
+/**
+ * displays card and
+ * helps handle card flip logic
+ */
 function Card({ card, flipStatus, matchStatus, handleCardFlip }) {
   function handleClick() {
     // only flip card if it's not matched yet

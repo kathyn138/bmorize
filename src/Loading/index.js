@@ -1,5 +1,6 @@
 import React from "react";
 
+// loading message used by Board when fetching API data
 function Loading() {
   return (
     <div className="col-8 my-auto">

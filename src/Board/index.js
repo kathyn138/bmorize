@@ -5,6 +5,11 @@ import Error from "../Error";
 import Loading from "../Loading";
 import "./Board.css";
 
+/**
+ * handles logic for card flip and game end. 
+ * renders loading screen, error screen, or cards
+ * depending on what is returned from the api.
+ */
 function Board({ level, handleEndGame }) {
   const [cards, setCards] = useState({});
   const [error, setError] = useState(null);
@@ -13,17 +18,12 @@ function Board({ level, handleEndGame }) {
   const [matchedCards, setMatchedCards] = useState(new Set([]));
   const rows = Object.keys(cards);
 
+  // on mount, fetch cards from api
   useEffect(
     function fetchCardsWhenMounted() {
       async function fetchCards() {
         try {
           const cardsResults = await BmorizeApi.getCards(level);
-          // const cardsResults = {
-          //   0: [
-          //     { value: "ok", image: "image.png", id: "ok" },
-          //     { value: "ok", image: "image.png", id: "ok2" },
-          //   ],
-          // };
           setCards(cardsResults);
         } catch (err) {
           setError(err);
@@ -38,8 +38,13 @@ function Board({ level, handleEndGame }) {
 
   const timerId = useRef();
 
+  /**
+   * only two cards can be flipped at a time.
+   * automatically unflip a pair of unmatched cards
+   * after a second if user doesn't click on a new card
+   */
   useEffect(
-    function autoFlipCards() {
+    function autoUnflipCards() {
       if (flippedCards.length === 2) {
         let match = checkCardMatch(...flippedCards);
         if (match) {
@@ -48,11 +53,10 @@ function Board({ level, handleEndGame }) {
           );
           return setFlippedCards([]);
         }
-        console.log("set timer");
+
         timerId.current = setInterval(() => setFlippedCards([]), 1000);
 
         return function cleanUpTimer() {
-          console.log("cleaning up");
           clearInterval(timerId.current);
         };
       }
@@ -60,6 +64,7 @@ function Board({ level, handleEndGame }) {
     [flippedCards]
   );
 
+  // used to check if game ended
   const totalUniqueCards = useMemo(() => {
     if (rows.length > 0) {
       let cardsPerRow = cards["0"].length;
@@ -68,6 +73,12 @@ function Board({ level, handleEndGame }) {
     }
   }, [rows, cards]);
 
+  /**
+   * when a user starts to match cards,
+   * check if the game ending condition is met.
+   * game ends when total number of unique cards is
+   * equal to total number of matched cards
+   */
   useEffect(function checkGameEnd() {
     console.log("run use effect");
     if (matchedCards.size) {
@@ -87,6 +98,15 @@ function Board({ level, handleEndGame }) {
     return false;
   }
 
+  /**
+   * checks if clicked card is unflipped or flipped
+   * if card is unflipped, flip the card
+   * else, unflip the card
+   *
+   * when two cards are flipped, check if they match.
+   * if user attempts to flip over three cards, the
+   * first two cards will be automatically unflipped.
+   */
   function handleCardFlip(direction, card) {
     const flippedCount = flippedCards.length;
     console.log("fp", flippedCount);
@@ -96,9 +116,11 @@ function Board({ level, handleEndGame }) {
       } else {
         console.log("in else user flip");
         let match = checkCardMatch(...flippedCards);
-        if (match)
+        if (match) {
           setMatchedCards(new Set([...matchedCards, flippedCards[0].value]));
-        setFlippedCards([card]);
+        } else {
+          setFlippedCards([card]);
+        }
       }
     } else {
       let filteredCards = flippedCards.filter((c) => c.id !== card.id);
@@ -106,6 +128,7 @@ function Board({ level, handleEndGame }) {
     }
   }
 
+  // keeps track of whether or not a card has been flipped
   function checkFlipStatus(cardId) {
     let flippedCardIds = flippedCards.map((c) => c.id);
 
@@ -115,6 +138,7 @@ function Board({ level, handleEndGame }) {
     return false;
   }
 
+  // keeps track of whether or not a card has been matched
   function checkMatchStatus(cardValue) {
     if (matchedCards.has(cardValue)) {
       return true;
