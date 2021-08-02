@@ -5,12 +5,11 @@ import LevelSelect from "../LevelSelect";
 import "./Game.css";
 
 function Game() {
-  const [gameStart, setGameStart] = useState(false);
-  const [gameEnd, setGameEnd] = useState(false);
+  const [gameScreen, setGameScreen] = useState("");
   const [level, setLevel] = useState("");
 
   function handleGameStart() {
-    setGameStart(true);
+    setGameScreen("board");
     setLevel(level);
   }
 
@@ -19,21 +18,19 @@ function Game() {
   }
 
   function handleEndGame() {
-    setGameEnd(true);
-    setGameStart(false);
+    setGameScreen("end");
   }
 
   function handleResetGame() {
-    setGameEnd(false);
-    setGameStart(false);
+    setGameScreen("");
     setLevel("");
   }
 
   let display;
 
-  if (gameStart) {
+  if (gameScreen === "board") {
     display = <Board level={level} handleEndGame={handleEndGame} />;
-  } else if (gameEnd) {
+  } else if (gameScreen === "end") {
     display = <GameEnd handleResetGame={handleResetGame} />;
   } else {
     display = (
